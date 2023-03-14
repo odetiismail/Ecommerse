@@ -1,8 +1,10 @@
 import React from "react";
-
+import HeroSection from "./Components/HeroSection";
 const Home = () => {
   return( 
-  <div className="text-3xl">Home</div>
+  <div className="max-w-[1440px]">
+    <HeroSection/>
+  </div>
   );
 };
 

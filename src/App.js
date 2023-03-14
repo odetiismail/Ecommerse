@@ -5,10 +5,12 @@ import Contact from "./Contact";
 import Cart from "./Cart";
 import Products from "./Products";
 import Error from "./Error";
+import Nav from "./Components/Nav";
 function App() {
   return (
     <div className="App">
       <Router>
+      <Nav/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -16,7 +18,6 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
           <Route path="*" element={<Error />} />
-          
         </Routes>
       </Router>
     </div>
