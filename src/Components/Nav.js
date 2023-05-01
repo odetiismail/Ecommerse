@@ -46,9 +46,8 @@ const Nav = () => {
         className={
           icon
             ? "hidden"
-            : "fixed md:hidden  w-[100%] left-0 top-0 bg-[#F6F8FA] h-screen text-center text-2xl"
-        }
-      >
+            : "fixed md:hidden  w-[100%] left-0 top-0 bg-[#F6F8FA] h-screen text-center text-2xl z-[1]"
+        }>
         <div className=" flex fixed right-[40px] top-[30px]">
           {icon ? null : (
             <AiOutlineClose size={30} onClick={() => Change(true)} />
