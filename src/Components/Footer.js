@@ -67,10 +67,10 @@ const Footer = () => {
       <p className="border-b-2 max-w-[85%] m-auto"></p>
      <div className="grid md:grid-cols-2 grid-cols-1 p-10">
         <div>
-          <p className="text-xl text-white">@2023 IsmailTechnical. All Rights Reserved</p>
+          <p className="md:text-xl text-white">@2023 IsmailTechnical. All Rights Reserved</p>
         </div>
         <div>
-        <p className="text-xl text-white uppercase">Private Policy & 
+        <p className=" text-white uppercase md:text-xl pt-10">Private Policy & 
         <br/>Terms and Conditions</p>
         </div>
       </div>

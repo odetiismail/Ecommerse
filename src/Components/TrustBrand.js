@@ -4,38 +4,38 @@ const TrustBrand = () => {
   return (
     <div className=" bg-gray-100">
       <div className="text-center">
-        <p className="text-3xl pt-10">Trust By 1000+ Companies</p>
+        <p className="md:text-3xl text-xl pt-10">Trust By 1000+ Companies</p>
       </div>
-      <div className=" flex-row-reverse max-w-[100%] lg:p-6 flex md:flex">
+      <div className="md:grid md:grid-cols-5 md:p-10">
         <div className=""> 
-        <img className="items-center"
+        <img className="m-auto  max-w-[40%] md:max-w-[100%]"
           src="https://raw.githubusercontent.com/solodev/infinite-logo-carousel/master/images/image2.png"
           alt="Searching"
         />
         </div>
 
        <div>
-       <img
+       <img className="m-auto max-w-[40%] md:max-w-[100%] "
           src="https://raw.githubusercontent.com/solodev/infinite-logo-carousel/master/images/image3.png"
           alt="trusted-brands"
         />
        </div>
 
         <div>
-        <img
+        <img className="m-auto max-w-[40%] md:max-w-[100%] "
           src="https://raw.githubusercontent.com/solodev/infinite-logo-carousel/master/images/image4.png"
           alt="Searching"
         />
         </div>
 
        <div>
-       <img
+       <img className="m-auto max-w-[40%] md:max-w-[100%] "
           src="https://raw.githubusercontent.com/solodev/infinite-logo-carousel/master/images/image6.png"
           alt="Searching"
         />
        </div>
        <div>
-       <img
+       <img className="m-auto max-w-[40%] md:max-w-[100%] "
           src="https://raw.githubusercontent.com/solodev/infinite-logo-carousel/master/images/image8.png"
           alt="Searching"
         />
