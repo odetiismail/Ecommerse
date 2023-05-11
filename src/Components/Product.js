@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import FormatePrice from "./FormatePrice";
 
 const Product = (curr) => {
-  const { id, name, company, price, image } = curr;
+  const { id, name, price, image } = curr;
+
+ 
 
   return (
     <NavLink to={`/singleProduct/${id}`}>
@@ -15,7 +18,7 @@ const Product = (curr) => {
 
         <div className=" flex justify-between text-lg pt-3">
           <p>{name}</p>
-          <p className="text-blue-600">$ {price}</p>
+          <p className="text-blue-600"><FormatePrice price={price}/></p>
         </div>
       </div>
     </NavLink>
