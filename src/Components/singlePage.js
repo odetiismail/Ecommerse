@@ -5,8 +5,10 @@ import MyImage from "./MyImage";
 import { NavLink } from "react-router-dom";
 import Star from "./Star";
 import FormatePrice from "./FormatePrice";
-import { TbTruckDelivery,TbReplaceFilled } from "react-icons/tb";
-import {FaUserShield} from 'react-icons/fa'
+import { TbTruckDelivery, TbReplaceFilled } from "react-icons/tb";
+import { FaUserShield } from "react-icons/fa";
+import Color from "./Colors";
+//import Color from "./Colors";
 const SinglePage = () => {
   const [data, setData] = useState([]);
   const urlData = useParams();
@@ -21,60 +23,66 @@ const SinglePage = () => {
     setData(da.data);
   };
 
-  const { id, name, company, price, image, stars, description, reviews } = data;
+  const { id, name, company, price, image, stars, description, reviews,colors } = data;
 
-  //console.log(data);
+  console.log(colors);
 
   return (
     <div className="">
-      <div className="text-2xl text-blue-500 bg-[#F6F8FA] ">
+      <div className="text-md md:text-2xl text-blue-500 bg-[#F6F8FA] ">
         <NavLink to="/" className="font-bold">
           Home
         </NavLink>
-        /<span className="text-black">{name}</span>
+        /<span className="text-black md:text-2xl">{name}</span>
       </div>
-      <div className="grid md:grid-cols-2 grid-col-1 gap-10 p-5">
+      <div className="grid md:grid-cols-2 grid-col-1 p-5 text-lg">
         <div>
           <MyImage imgs={image} />
         </div>
-        <div>
-          <p className="text-3xl">{name}</p>
-          <Star />
-          <p className="">
+        <div className="grid gap-5 p-5">
+          <p className="md:text-3xl text-2xl" >{name}</p>
+          <Star stars={stars} reviews={reviews} />
+          <p className="font-bold">
             MRP:
-            <del className=" inline-block">
-              <FormatePrice price={price + 250000} />
+            <del className=" inline-block ">
+               <FormatePrice price={price + 250000} />
             </del>
           </p>
-          <p>{description}</p>
-          <div className="flex justify-around ">
-            <div className="">
+          <p className="text-sm md:text-[18px]">{description}</p>
+          <div className="flex justify-around border-b-2 border-emerald-400">
+            <div>
               <div className="bg-gray-200 w-11 m-auto flex rounded-3xl justify-center ">
-                <TbTruckDelivery size="40px" className=""/>
+                <TbTruckDelivery size="30px" className="" />
               </div>
-              <p>Free Delivery</p>
+              <p className="text-sm md:text-md pt-2 text-center ">Free Delivery</p>
             </div>
-            <div className="">
-              <div className="bg-gray-200 bg-gray-200 w-11 m-auto flex rounded-3xl justify-center">
-                <TbReplaceFilled size="40px" />
+            <div>
+              <div className="bg-gray-200 w-11 m-auto flex rounded-3xl justify-center">
+                <TbReplaceFilled size="30px" />
               </div>
-              <p>30 Days Replacement</p>
+              <p className="text-sm md:text-md pt-2 text-center ">30 Days Replacement</p>
             </div>
-            <div className="">
-              <div className="bg-gray-200 bg-gray-200 w-11 m-auto flex rounded-3xl justify-center">
-                <TbTruckDelivery size="40px" />
+            <div>
+              <div className="bg-gray-200 w-11 m-auto flex rounded-3xl justify-center">
+                <TbTruckDelivery size="30px" />
               </div>
-              <p>Ismail Delivery</p>
+              <p className="text-sm md:text-md pt-2 text-center ">Ismail Delivery</p>
             </div>
-            <div className="">
-              <div className="bg-gray-200 bg-gray-200 w-11 m-auto flex rounded-3xl justify-center">
-                <FaUserShield size="40px" />
+            <div>
+              <div className="bg-gray-200 w-11 m-auto flex rounded-3xl justify-center">
+                <FaUserShield size="30px" />
               </div>
-              <p>2 years Warranty</p>
+              <p className="text-sm md:text-md pt-2 text-center ">2 years Warranty</p>
             </div>
           </div>
-          <p>Brand : {company}</p>
-          <p>ID : {id}</p>
+          <div className="border-b-2 border-black p-2 md:p-5">
+          <p>Brand : <span className="font-bold">{company}</span></p>
+          
+          <p>ID : <span className="font-bold">{id}</span></p>
+          </div>
+          <div>
+          <Color colors={colors}/>
+          </div>
         </div>
       </div>
     </div>

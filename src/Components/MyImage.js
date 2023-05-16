@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const MyImage = ({ imgs = [{ url: "" }] }) => {
-  //console.log(imgs)
+ 
   const [mainImage, setMainImage] = useState(imgs[0])
  
   useEffect(()=>{
     setMainImage(imgs[0])
+    
   },[imgs])
   
   return (
@@ -29,7 +30,7 @@ const MyImage = ({ imgs = [{ url: "" }] }) => {
         <img
           src={mainImage.url}
           width="100%"
-          className=" pt-10 md:pt-32 md:max-w-[120%] max-w-[320px] m-auto"
+          className=" pt-10 md:pt-32 md:max-w-[120%] max-w-[250px] m-auto"
           alt={mainImage.filename}
         />
       </div>
