@@ -7,8 +7,8 @@ import Star from "./Star";
 import FormatePrice from "./FormatePrice";
 import { TbTruckDelivery, TbReplaceFilled } from "react-icons/tb";
 import { FaUserShield } from "react-icons/fa";
-import Color from "./Colors";
-//import Color from "./Colors";
+import AddToCart from "./AddToCart";
+
 const SinglePage = () => {
   const [data, setData] = useState([]);
   const urlData = useParams();
@@ -25,7 +25,7 @@ const SinglePage = () => {
 
   const { id, name, company, price, image, stars, description, reviews,colors } = data;
 
-  console.log(colors);
+  //console.log(data);
 
   return (
     <div className="">
@@ -81,7 +81,7 @@ const SinglePage = () => {
           <p>ID : <span className="font-bold">{id}</span></p>
           </div>
           <div>
-          <Color colors={colors}/>
+          <AddToCart data={data} />
           </div>
         </div>
       </div>
