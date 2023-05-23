@@ -16,6 +16,7 @@ export const fetchPosts = createAsyncThunk("Posts/FetchPosts", async () => {
 const initialState = {
   products: [],
   featureProducts: [],
+  filterProduct: [],
   status: "idle",
 };
 
@@ -23,19 +24,48 @@ const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-   
+    SortingPro: (state, { payload }) => {
+      // console.log(current(state.products))
+      if (payload === "high") {
+        const da = state.products.sort((a, b) => b.price - a.price);
+
+        state.filterProduct = da;
+      }
+      if (payload === "low") {
+        const da = state.products.sort((a, b) => a.price - b.price);
+
+       return {
+        ...state,
+        filterProduct:da
+       }
+      }
+
+      if (payload == "a-z") {
+        const da = state.products.sort((a, b) => a.name.localeCompare(b.name));
+        state.filterProduct = da;
+      }
+
+      if (payload == "z-a") {
+        const da = state.products.sort((a, b) => b.name.localeCompare(a.name));
+        state.filterProduct = da;
+      }
+
+      // const da=state.products.sort((a,b)=>b.price-a.price)
+      // console.log(current(da))
+    },
   },
   extraReducers(builder) {
     builder
       .addCase(fetchPosts.pending, (state, action) => {
         state.status = "Pending";
       })
-      .addCase(fetchPosts.fulfilled, (state, {payload}) => {
+      .addCase(fetchPosts.fulfilled, (state, { payload }) => {
         state.status = "Successful";
 
-        const fep=payload.filter((curr)=>curr.featured===true)
-          state.products=payload
-          state.featureProducts=fep
+        const fep = payload.filter((curr) => curr.featured === true);
+        state.products = payload;
+        state.featureProducts = fep;
+        state.filterProduct = payload;
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "error";
@@ -44,7 +74,7 @@ const counterSlice = createSlice({
   },
 });
 
-export const { fetPro } = counterSlice.actions;
+export const { SortingPro } = counterSlice.actions;
 
 export default counterSlice.reducer;
 

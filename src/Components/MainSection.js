@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import FormatePrice from "./FormatePrice";
 const MainSection = ({ view }) => {
-  const currData = useSelector((curr) => curr.counter.products);
+  const currData = useSelector((curr) =>curr.counter.filterProduct);
 
+console.log(currData.length)
   return (
     <div>
       {view ? (
@@ -20,7 +21,7 @@ const MainSection = ({ view }) => {
                       alt="Louvre"
                     />
 
-                    <div className=" flex justify-between text-lg pt-3">
+                    <div cla                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ssName=" flex justify-between text-lg pt-3">
                       <p>{curr.name}</p>
                       <p className="text-blue-600">
                         <FormatePrice price={curr.price} />
