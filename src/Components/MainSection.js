@@ -4,8 +4,12 @@ import { NavLink } from "react-router-dom";
 import FormatePrice from "./FormatePrice";
 const MainSection = ({ view }) => {
   const currData = useSelector((curr) =>curr.counter.filterProduct);
-
-console.log(currData.length)
+ // console.log(currData)
+ if(currData.length===0){
+ return (
+  <div>Loading . . .</div>
+ )
+ }
   return (
     <div>
       {view ? (
