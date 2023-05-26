@@ -26,47 +26,34 @@ const counterSlice = createSlice({
       if (payload === "high") {
         const da = state.products.sort((a, b) => b.price - a.price);
 
-        return {
-          ...state,
-          filterProduct: da,
-        };
+        state.filterProduct = da;
       }
       if (payload === "low") {
         const da = state.products.sort((a, b) => a.price - b.price);
 
-        return {
-          ...state,
-          filterProduct: da,
-        };
+        state.filterProduct = da;
       }
 
       if (payload == "a-z") {
         const da = state.products.sort((a, b) => a.name.localeCompare(b.name));
 
-        return {
-          ...state,
-          filterProduct: da,
-        };
+        state.filterProduct = da;
       }
 
       if (payload == "z-a") {
         const da = state.products.sort((a, b) => b.name.localeCompare(a.name));
-        return {
-          ...state,
-          filterProduct: da,
-        };
+        state.filterProduct = da;
       }
     },
-    Sea: (state,{payload}) => {
-   
-    const da=state.products.filter((a)=>{
-      return a.name.match(payload)
-    })
-    
-    return {
-      ...state,
-      filterProduct:da
-    }
+    filterSearch: (state, { payload }) => {
+      const da = state.products.filter((a) => {
+        return a.name.match(payload);
+      });
+
+      return {
+        ...state,
+        filterProduct: da,
+      };
     },
   },
   extraReducers(builder) {
@@ -89,7 +76,7 @@ const counterSlice = createSlice({
   },
 });
 
-export const { SortingPro, Sea } = counterSlice.actions;
+export const { SortingPro, filterSearch } = counterSlice.actions;
 
 export default counterSlice.reducer;
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Sea } from "../reducer/Slice";
+import { filterSearch } from "../reducer/Slice";
 import { useDispatch } from "react-redux";
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -12,7 +12,7 @@ const Search = () => {
   };
 
   if(search.length>0){
-    dispatch(Sea(search));
+    dispatch(filterSearch(search));
   }
 
 //   useEffect(() => {
