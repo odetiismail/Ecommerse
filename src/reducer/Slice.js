@@ -68,17 +68,25 @@ const counterSlice = createSlice({
       }
       state.filterProduct = da;
     },
-    companyFil: (state,{payload}) => {
-      const com=state.products.filter((a)=>{
-        return a.company.match(payload)
-      })
-     if(payload==='All'){
+    companyFil: (state, { payload }) => {
+      const com = state.products.filter((a) => {
+        return a.company.match(payload);
+      });
+      if (payload === "All") {
+        return {
+          ...state,
+          filterProduct: state.products,
+        };
+      }
+      state.filterProduct = com;
+    },
+    ColorFil: (state, { payload }) => {
+      const ma = state.products.filter((curr) => curr.colors.includes(payload));
+
       return {
         ...state,
-        filterProduct:state.products
+        filterProduct:ma
       }
-     }
-     state.filterProduct= com
     },
   },
   extraReducers(builder) {
@@ -101,8 +109,13 @@ const counterSlice = createSlice({
   },
 });
 
-export const { SortingPro, filterSearch, categoryFilter, companyFil } =
-  counterSlice.actions;
+export const {
+  SortingPro,
+  filterSearch,
+  categoryFilter,
+  companyFil,
+  ColorFil,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
 

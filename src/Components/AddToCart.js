@@ -34,7 +34,7 @@ const AddToCart = ({ data }) => {
         <p>
           {colors &&
             colors.map((cur, index) => {
-             // console.log(cur);
+              // console.log(cur);
               return (
                 <button
                   key={index}

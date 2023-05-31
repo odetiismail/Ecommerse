@@ -28,7 +28,7 @@ const SinglePage = () => {
   //console.log(data);
 
   return (
-    <div className="">
+    <div>
       <div className="text-md md:text-2xl text-blue-500 bg-[#F6F8FA] ">
         <NavLink to="/" className="font-bold">
           Home
@@ -52,7 +52,7 @@ const SinglePage = () => {
           <div className="flex justify-around border-b-2 border-emerald-400">
             <div>
               <div className="bg-gray-200 w-11 m-auto flex rounded-3xl justify-center ">
-                <TbTruckDelivery size="30px" className="" />
+                <TbTruckDelivery size="30px"/>
               </div>
               <p className="text-sm md:text-md pt-2 text-center ">Free Delivery</p>
             </div>
