@@ -55,6 +55,31 @@ const counterSlice = createSlice({
         filterProduct: da,
       };
     },
+    categoryFilter: (state, { payload }) => {
+      const da = state.products.filter((a) => {
+        return a.category.match(payload);
+      });
+
+      if (payload === "All") {
+        return {
+          ...state,
+          filterProduct: state.products,
+        };
+      }
+      state.filterProduct = da;
+    },
+    companyFil: (state,{payload}) => {
+      const com=state.products.filter((a)=>{
+        return a.company.match(payload)
+      })
+     if(payload==='All'){
+      return {
+        ...state,
+        filterProduct:state.products
+      }
+     }
+     state.filterProduct= com
+    },
   },
   extraReducers(builder) {
     builder
@@ -76,7 +101,8 @@ const counterSlice = createSlice({
   },
 });
 
-export const { SortingPro, filterSearch } = counterSlice.actions;
+export const { SortingPro, filterSearch, categoryFilter, companyFil } =
+  counterSlice.actions;
 
 export default counterSlice.reducer;
 
