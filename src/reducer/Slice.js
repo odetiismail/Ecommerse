@@ -15,6 +15,11 @@ const initialState = {
   featureProducts: [],
   filterProduct: [],
   status: "idle",
+  filters: {
+   
+    Price: 0,
+    minPrice: 0,
+  },
 };
 
 const counterSlice = createSlice({
@@ -85,7 +90,19 @@ const counterSlice = createSlice({
 
       return {
         ...state,
-        filterProduct:ma
+        filterProduct: ma,
+      };
+    },
+    PriceFilter: (state, {payload}) => {
+
+      const {Price}=payload
+      const pr= state.products.filter((curr)=>curr.price<=Price)
+
+     // console.log(pr);
+      return {
+        ...state,
+        filterProduct:pr,
+        filters:{...state.filters,Price}
       }
     },
   },
@@ -98,10 +115,16 @@ const counterSlice = createSlice({
         state.status = "Successful";
 
         const fep = payload.filter((curr) => curr.featured === true);
+        const maxPr = payload.map((curr) => curr.price);
+
+        const maxPri = Math.max(...maxPr);
+
         state.products = payload;
         state.featureProducts = fep;
         state.filterProduct = payload;
+        state.filters = { ...state.filters, maxPrice:maxPri,Price:maxPri,minPrice:0 };
       })
+
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "error";
         // state.error = action.error.message
@@ -115,6 +138,7 @@ export const {
   categoryFilter,
   companyFil,
   ColorFil,
+  PriceFilter,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

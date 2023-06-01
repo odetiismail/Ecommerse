@@ -15,7 +15,7 @@ const ColorFilter = () => {
     const C = [...new Set(Co)];
 
     return C;
-  };
+  };  
 
   const Color = Col(da);
 
@@ -33,7 +33,7 @@ const ColorFilter = () => {
       <div className="flex">
         {Color.map((curr, index) => {
           return (
-            <div>
+            <div key={index}>
               <button
                 key={index}
                 style={{ backgroundColor: curr }}
