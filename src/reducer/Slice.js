@@ -16,7 +16,6 @@ const initialState = {
   filterProduct: [],
   status: "idle",
   filters: {
-   
     Price: 0,
     minPrice: 0,
   },
@@ -93,17 +92,32 @@ const counterSlice = createSlice({
         filterProduct: ma,
       };
     },
-    PriceFilter: (state, {payload}) => {
+    PriceFilter: (state, { payload }) => {
+      const { Price } = payload;
+      const pr = state.products.filter((curr) => curr.price <= Price);
 
-      const {Price}=payload
-      const pr= state.products.filter((curr)=>curr.price<=Price)
-
-     // console.log(pr);
+      // console.log(pr);
       return {
         ...state,
-        filterProduct:pr,
-        filters:{...state.filters,Price}
-      }
+        filterProduct: pr,
+        filters: { ...state.filters, Price },
+      };
+    },
+    Clear: (state, action) => {
+      const {filters}=state
+     
+  const Pri=filters.maxPrice
+
+    
+      return {
+        ...state,
+        filterProduct: state.products,
+
+        filters: { ...state.filters,Price:Pri },
+      };
+
+      // console.log(current(state.products))
+      //state.filterProduct=state.products
     },
   },
   extraReducers(builder) {
@@ -122,7 +136,12 @@ const counterSlice = createSlice({
         state.products = payload;
         state.featureProducts = fep;
         state.filterProduct = payload;
-        state.filters = { ...state.filters, maxPrice:maxPri,Price:maxPri,minPrice:0 };
+        state.filters = {
+          ...state.filters,
+          maxPrice: maxPri,
+          Price: maxPri,
+          minPrice: 0,
+        };
       })
 
       .addCase(fetchPosts.rejected, (state, action) => {
@@ -139,6 +158,7 @@ export const {
   companyFil,
   ColorFil,
   PriceFilter,
+  Clear,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

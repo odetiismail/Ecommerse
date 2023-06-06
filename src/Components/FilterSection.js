@@ -4,6 +4,7 @@ import Category from "./Category";
 import ColorFilter from "./ColorFilter";
 import CompanyFilter from "./CompanyFilter";
 import InputRange from "./inputRange";
+import ClearFilter from "./ClearFilter";
 const FilterSection = () => {
   return (
     <div>
@@ -12,6 +13,7 @@ const FilterSection = () => {
       <CompanyFilter/>
        <ColorFilter/>
        <InputRange/>
+       <ClearFilter/>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { PriceFilter } from "../reducer/Slice";
 const InputRange = () => {
   const da = useSelector((curr) => curr.counter.filters);
  const {Price,maxPrice,minPrice}=da
-  console.log(da.maxPrice)
+  //console.log(da.maxPrice)
   const dispatch = useDispatch();
 
   const setPrice = (e) => {
@@ -18,7 +18,7 @@ const InputRange = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <label className="block mt-4  text-md font-medium text-gray-900 dark:text-white">
         Price Range
       </label>

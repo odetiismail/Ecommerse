@@ -23,7 +23,7 @@ const ColorFilter = () => {
   dispatch(ColorFil(e))
   };
   return (
-    <div>
+    <div className="text-sm md:text-lg md:mt-8 mt-4">
       <label
         for="countries"
         className="block m-auto mb-2 md:mt-4 text-md font-medium text-gray-900 dark:text-white"
@@ -37,7 +37,7 @@ const ColorFilter = () => {
               <button
                 key={index}
                 style={{ backgroundColor: curr }}
-                className=" rounded-3xl p-3 m-1 md:m-2 relative "
+                className=" rounded-3xl md:p-3 p-2 first-letter:cursor-pointer m-1 md:m-2 relative "
                 onClick={() => setColor(curr)}
               ></button>
             </div>
