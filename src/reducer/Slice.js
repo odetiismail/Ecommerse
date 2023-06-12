@@ -19,9 +19,10 @@ const initialState = {
     Price: 0,
     minPrice: 0,
   },
+  cart: [],
 };
 
-const counterSlice = createSlice({
+export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
@@ -104,20 +105,37 @@ const counterSlice = createSlice({
       };
     },
     Clear: (state, action) => {
-      const {filters}=state
-     
-  const Pri=filters.maxPrice
+      const { filters } = state;
 
-    
+      const Pri = filters.maxPrice;
+
       return {
         ...state,
         filterProduct: state.products,
 
-        filters: { ...state.filters,Price:Pri },
+        filters: { ...state.filters, Price: Pri },
       };
 
       // console.log(current(state.products))
       //state.filterProduct=state.products
+    },
+    addCart: (state, { payload }) => {
+      const { data, amount, color } = payload;
+
+      const cartProduct = {
+        id: color + data.id,
+        name: data.name,
+        amount,
+        image: data.image[0].url,
+        color,
+        price: data.price,
+        max: data.stock,
+      };
+
+      return {
+        ...state,
+        cart: [...state.cart, cartProduct],
+      };
     },
   },
   extraReducers(builder) {
@@ -159,8 +177,11 @@ export const {
   ColorFil,
   PriceFilter,
   Clear,
+  addCart,
 } = counterSlice.actions;
 
-export default counterSlice.reducer;
+//export const {add}=cartSlice.actions;
+//export default {counterSlice,cartSlice}=reducer;
+//export default cartSlice.reducer
 
 //export const selectAllPosts=(state)=>state.posts.posts
