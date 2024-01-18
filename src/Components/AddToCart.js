@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+
 import { TiTick } from "react-icons/ti";
 import CartAmountToggle from "./CartAmountToggle";
-import { addCart } from "../reducer/Slice";
-import { useDispatch } from "react-redux";
-
+//import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 const AddToCart = ({ data }) => {
   const { colors, stock } = data;
 
-  const dispatch = useDispatch();
-
-  //console.log(data);
-  const [color, setColor] = useState(colors[0]);
+  const [color, setColor] = useState(0);
   const [amount, setAmount] = useState(1);
-
   const setIncrement = () => {
     amount < stock ? setAmount(amount + 1) : setAmount(stock);
   };
@@ -21,23 +15,17 @@ const AddToCart = ({ data }) => {
   const setDecrement = () => {
     amount > 1 ? setAmount(amount - 1) : setAmount(1);
   };
+  // const [add, setAdd] = useState(1);
 
-  // const upData = () => {
-  //   let upColor = color;
-  //   let upAmount = amount;
+  //    const col=colors;
+  //    //console.log(col)
+  //     const  name =['a','b','c']
+  //     const toggle={}
 
-  //   return {
-  //     ...data,
-  //     colors: upColor,
-  //     tAmount: upAmount,
-  //   };
-  // };
-  // const mod = upData();
-
-  //Adding array to state of Cart
-  // const setCartAdd = () => {
-    
-  // };
+  //     name.forEach((curr,index)=>{
+  //         toggle[curr]=col[index]
+  //     })
+  //    // console.log(toggle)
 
   return (
     <div>
@@ -46,15 +34,15 @@ const AddToCart = ({ data }) => {
         <p>
           {colors &&
             colors.map((cur, index) => {
-              console.log(cur);
+              // console.log(cur);
               return (
                 <button
                   key={index}
                   style={{ backgroundColor: cur }}
                   className=" rounded-3xl p-3 m-1 md:m-2 relative "
-                  onClick={() => setColor(cur)}
+                  onClick={() => setColor(index)}
                 >
-                  {color === cur ? (
+                  {index === color ? (
                     <TiTick
                       className=" absolute top-0 right-2 left-0 text-white"
                       size="25px"
@@ -82,19 +70,6 @@ const AddToCart = ({ data }) => {
         setIncrement={setIncrement}
         setDecrement={setDecrement}
       />
-
-      <div>
-        <NavLink 
-        to="/cart"
-        onClick={() => {
-          dispatch(addCart({data,color,amount}));
-         }}
-        >
-          <button className="bg-blue-600  hover:bg-white hover:text-black text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-            Add To Cart
-          </button>
-        </NavLink>
-      </div>
     </div>
   );
 };
