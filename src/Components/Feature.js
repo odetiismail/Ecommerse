@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Product from "./Product";
 export const Feature = () => {
   const getDa = useSelector((curr) => curr.counter.featureProducts);
-
+ if(getDa.length){
   return (
     <div className="p-5 bg-gray-100">
       <h2 className=" uppercase text-blue-600">Check Now !</h2>
@@ -18,4 +18,11 @@ export const Feature = () => {
       </div>
     </div>
   );
+ }
+ else{
+  return(
+    <div>Loading . . . . . .</div>
+  )
+ }
+ 
 };
