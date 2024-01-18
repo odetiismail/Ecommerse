@@ -137,6 +137,13 @@ export const counterSlice = createSlice({
         cart: [...state.cart, cartProduct],
       };
     },
+    removeItem:(state,{payload})=>{
+      const remIte=state.cart.filter((curr)=>curr.id!=payload)
+      return {
+        ...state,
+        cart:remIte
+      }
+    }
   },
   extraReducers(builder) {
     builder
@@ -178,6 +185,7 @@ export const {
   PriceFilter,
   Clear,
   addCart,
+  removeItem
 } = counterSlice.actions;
 
 //export const {add}=cartSlice.actions;

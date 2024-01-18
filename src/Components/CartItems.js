@@ -2,7 +2,14 @@ import React from "react";
 import CartAmountToggle from "./CartAmountToggle";
 import FormatePrice from "./FormatePrice";
 import { AiFillDelete } from "react-icons/ai";
+import { removeItem } from "../reducer/Slice";
+import { useDispatch } from "react-redux";
 const CartItems = ({ id, amount, color, image, name, price, max }) => {
+  const dispatch = useDispatch();
+
+  const setRemove = (e) => {
+    dispatch(removeItem(e));
+  };
   // const [amount, setAmount] = useState(1);
   const setIncrement = () => {
     // amount < stock ? setAmount(amount + 1) : setAmount(stock);
@@ -14,7 +21,7 @@ const CartItems = ({ id, amount, color, image, name, price, max }) => {
 
   return (
     <div className="grid  grid-cols-5 text-center">
-      <div className="flex">
+      <div className="flex gap-3">
         <div>
           <img src={image} className="w-[80px]" alt={id} />
         </div>
@@ -43,7 +50,7 @@ const CartItems = ({ id, amount, color, image, name, price, max }) => {
       </div>
       <p>SubTotal</p>
       <div>
-        <button>
+        <button onClick={() => setRemove(id)}>
           <AiFillDelete size={20} className=" text-orange-600 cursor-pointer" />
         </button>
       </div>
